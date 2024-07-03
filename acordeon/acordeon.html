@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .Section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 50vh;
+            width: 250px;
+            padding: 1rem;
+        }
+
+        .Container {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            align-items: center;
+            transition: height 1s ease;
+            overflow: hidden;
+            justify-content: center;
+            height: 6rem;
+            position: relative;
+        }
+
+        .Container.active {
+            height: 10rem;
+        }
+
+        .Container-button {
+            width: 6rem;
+            position: absolute;
+            top: 2rem;
+        }
+
+        .Section,
+        .Container {
+            box-shadow: 0 0 15px rgb(172, 168, 168);
+            border-radius: 15px;
+        }
+
+        .Container-p {
+            display: none;
+        }
+
+        .Container-p.active {
+            display: flex;
+            margin-top: 4rem;
+
+        }
+
+        .Container-button {
+            box-shadow: 0 0 15px rgb(172, 168, 168);
+            border-radius: 10px;
+            border: none;
+            height: 2rem;
+            width: 70%;
+        }
+
+        .Container-button:hover {
+            cursor: pointer;
+            box-shadow: inset 0 0 15px rgb(172, 168, 168);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="Section">
+        <div class="Container">
+            <button class="Container-button">indice 0</button>
+            <p class="Container-p">Bloque de informacion</p>
+        </div>
+        <div class="Container">
+            <button class="Container-button">indice 0</button>
+            <p class="Container-p">Bloque de informacion</p>
+        </div>
+        <div class="Container">
+            <button class="Container-button">indice 0</button>
+            <p class="Container-p">Bloque de informacion</p>
+        </div>
+        <div class="Container">
+            <button class="Container-button">indice 0</button>
+            <p class="Container-p">Bloque de informacion</p>
+        </div>
+
+    </section>
+    <script>
+        const containers = document.querySelectorAll('.Container');
+
+        containers.forEach(container => {
+            let button = container.querySelector('.Container-button');
+            let pText = container.querySelector('.Container-p');
+            button.addEventListener('click', () => {
+                containers.forEach(c => {
+                    c.classList.remove('active');
+                    c.querySelector('.Container-p').classList.remove('active');
+                });
+                pText.classList.add('active');
+                container.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
